@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+
+
+{% load tz %}
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'css/mystyles.css' %}">
+
+</head>
+
+
+<!-- 
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+    body {
+        font-family: 'Popins', sans-serif;
+        background-color: rgba(52, 52, 116, 0.701);
+ 
+    }
+
+    span i.username {
+        text-transform: capitalize;
+    }
+
+    .app-div {
+        max-width: 768px;
+        min-width: 298.5px;
+        
+        /*
+        max-height: 700px;
+        */
+        
+        position: relative;
+
+    }
+
+    
+        
+    
+
+    .js-strike-through {
+        position: relative;
+    }
+
+    .js-strike-through::after {
+
+        content: "";
+
+        width: 60%;
+        height: 2px;
+        border-bottom: 2px solid rgba(0, 128, 0, 0.866);
+    
+        /*
+        background-color: rgb(49, 131, 43);
+        */
+
+        position: absolute;
+        top: 48%;
+        left: 7px; right: 4px;
+        z-index: 3;
+
+        display: var(--displayValue, none);
+
+    }
+
+    .pending_task {
+        position: relative;
+    }
+
+    .completed_task {
+        position: relative;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    
+
+    h2 span{
+         
+        padding: 10px 20px;
+        
+    }
+
+    .add-btn {
+        border-radius: 50%;
+        display: inline-block;
+        width: 50px;
+        height: 49px;
+        margin-left: 5px;
+        
+        background-color: rgba(86, 85, 85, 1);
+
+
+         /*       
+        animation: glow 1s linear infinite alternate;
+        */
+
+        border: 2px solid rgb(152, 149, 149);
+    }
+
+    @keyframes glow {
+        0% {
+            box-shadow: 0 0 3px rgba(128, 128, 128, 0.537);
+        }
+        20% {
+            box-shadow: 0 0 4px rgba(128, 128, 128, 0.725);
+        }
+        40%{
+            box-shadow: 0 0 5px rgba(128, 128, 128, 0.863);
+        }
+        60% {
+            box-shadow: 0 0 7px rgba(128, 128, 128, 0.936);
+        }
+        100%{
+            box-shadow: 0 0 9px darkgray;
+        }
+    }
+
+    .add-btn:hover {
+        transform: scale(1.05);
+        background-color: rgba(86, 85, 85, 0.888);
+    }
+
+    .add-btn .fa-solid.fa-plus {
+        line-height: 1.5;
+        font-size: 30px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .fa-solid.fa-user {
+        border: 1px solid rgba(128, 128, 128, 0.611);
+        border-radius: 50%;
+        height: 45px;
+        width: 45px;
+        padding: 10px;
+        text-align: center;
+        background-color: rgba(128, 128, 128, 0.271);
+    }
+
+    .user-div {
+        
+        margin-top: -10px;
+        margin-bottom: 20px;
+        z-index: 3;
+    }
+
+
+    .user-div .username-div  {
+        position: relative;
+        
+    }
+
+
+
+    .user-div .username-div .username-span {
+        cursor: pointer;
+        z-index: 5;
+        padding: 18px 20px 20px 6px;
+        
+    }
+
+    
+    .user-div .username-div .username-span:hover {
+        background-color: rgba(211, 211, 211, 0.614);
+    }
+
+    .user-div .username-div .username-span .username {
+        font-size: 19px;
+    }
+
+    .user-div .username-div .username-span .fa-solid.fa-user {
+        width: 43px;
+        height: 43px;
+        
+        font-size: 18px;
+        
+    }
+
+
+    .user-div .username-div .fa-solid.fa-caret-down {
+
+        margin-left: 10px;
+        cursor: pointer;
+        z-index: 2;
+        color: gray;
+    }
+
+    .user-div .username-div .logout-btn {
+        position: absolute;
+        top: 114.5%;
+        left: 10px;
+        z-index: 5!important;
+        border: 2px solid rgba(167, 166, 166, 0.551);
+        box-shadow: 1px 13px 10px rgba(38, 38, 38, 0.577);
+
+        margin-top: 3px;
+        padding: 10px 27px;
+        font-size: 18px;
+
+        cursor: pointer;
+
+    }
+
+
+
+    .user-div .username-div .logout-btn:hover {
+        transform: scaleX(1.05);
+    }
+
+    .user-div .username-div .logout-btn a {
+        font-size: 18px;
+        padding-inline: 12px;
+    }
+
+    .table {
+        
+        font-size: 20px;
+        border-collapse: separate;
+        border-spacing: 0px 20px;
+        width: 100%;
+        display: block;
+
+        
+        overflow: hidden;
+        
+        height: 430px;
+        border: 2px solid rgba(128, 128, 128, 0.264);
+        border-radius: 5px;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(46, 43, 43, 0.638) rgba(99, 99, 99, 0.271);
+        padding-bottom: 25px;
+        
+        
+        
+    }
+    
+
+    .table th {
+        color: rgba(255, 255, 255, 0.821);
+        background-color: rgba(66, 66, 110, 0.951);
+        min-width: 80px;
+        width: 205px;
+
+        /*
+        position: sticky;
+        top: 35px;
+
+        z-index: 2;
+        */
+ 
+
+    }
+    .table th:nth-of-type(1) {
+        border-radius: 5px 0px 0px 5px;
+        padding-left: 10px;
+    }
+    .table th:nth-of-type(4) {
+        border-radius: 0px 5px 5px 0px;
+    }
+
+
+    .table tr td {
+        text-transform: capitalize;
+
+    }
+
+
+    .table tr {
+        line-height: 1.4;
+    }
+
+    .table thead tr {
+        position: relative;
+    }
+
+    .table thead tr td.status-heading {
+        line-height: .5;
+        padding: 8px 0px;
+        font-weight: 600;
+        font-size: 16px;
+        border: none;
+        color: rgba(40, 40, 79, 0.686);
+        position: absolute;
+        top: -28.5px;
+        left: 0; right: 0;
+        z-index: 3;
+        
+    }
+
+    .table thead tr td.status-heading > div {
+        background-color: rgba(168, 168, 168, 0.429);
+        border-radius: 2px;
+        padding-block: 6px;
+    }
+    .table thead tr td.status-heading div > * {
+        padding: 6px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        color: rgba(43, 43, 87, 0.663);
+        cursor: pointer;
+    }
+
+
+    .all_button span {
+        color: rgb(32, 35, 66);
+    }
+
+    .pending_button span {
+        color: red;
+    }
+    .completed_button span {
+        color: green;
+    }
+
+
+
+    .table thead tr td.status-heading div > *:hover {
+        background-color: rgb(128, 128, 128);
+        color: whitesmoke;  
+    }
+
+
+
+    .table thead tr td.status-heading div a.active {
+        
+        background-color: rgba(0, 128, 0, 0.412);
+        color: whitesmoke;
+        box-shadow: 0 0 5px gray;
+        
+        
+    } 
+    .table thead tr td.status-heading div a.active span {
+        color: whitesmoke;
+    }
+   
+
+    .table thead tr td.status-heading div a:nth-of-type(1) {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .table thead tr td.status-heading div a:nth-of-type(2) {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .table thead tr td.status-heading div a:nth-of-type(3) {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .table .mobile-button {
+        position: absolute;
+        bottom: -30px;
+        left: 5px; right: 5px;
+        display: none;
+        max-width: 50%;
+        min-width: 70%;
+        margin-inline: auto;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 1px solid white;
+        background-color: rgba(211, 211, 211, 0.658);
+        border-radius: 50px;
+        padding: 7px;
+        z-index: 8;
+        backdrop-filter: blur(4px);
+
+        box-shadow: 1px 9px 10px gray;
+       
+
+    }
+
+    .table .mobile-button.activate {
+        display: flex;
+    }
+
+     
+    .hide-column {
+        visibility: collapse;
+        
+    }
+
+
+    .modal {
+        margin: 0 auto;
+        margin-top: 60px;
+    }
+    
+    .modal .modal-body p:nth-of-type(1),
+    .modal .modal-body p:nth-of-type(2) {
+        text-transform: capitalize;
+    }
+
+    .modal .modal-body p span {
+        font-size: 16px;
+    }
+
+   .modal .modal-body p span.status {
+        font-size: 20px;
+   }
+
+   .delete-confirm {
+        position: absolute;
+        top: 0px;
+        left: 0px; right: 0;
+        
+        min-height: 118dvh;
+
+        z-index: 10;
+        
+        text-align: center;
+        background-color: rgba(237, 237, 237, 0.289);
+        backdrop-filter: blur(1px);
+             
+   }
+
+
+    .delete-popup {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        background-color: rgba(93, 93, 93, 0.950);
+        
+        margin-block: 250px;
+        margin-inline: 30%;
+        border-radius: 10px; 
+        border: 2px solid rgba(245, 245, 245, 0.822); 
+        box-shadow: 0 0 10px grey;
+    }
+
+    .delete-popup.active-popup {
+
+        animation: 90ms ease-in myAnimation;
+        
+    }
+
+    @keyframes myAnimation {
+        0% {
+            opacity: 0;
+            transform: scaleX(.5);
+        } 
+        20% {
+            opacity: .2;
+            transform: scaleX(.7);
+        }
+        40% {
+            opacity: .4;
+            transform: scaleX(.8);
+        }
+        60% {
+            opacity: .6;
+            transform: scaleX(.9);
+        }
+        100% {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+   }
+
+
+    .delete-popup p {
+        color: rgba(255, 255, 255, 0.882);
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    
+
+    
+    /* media query */
+
+    @media (max-width: 1000px) {
+        .delete-confirm {
+            min-height: 116dvh;
+        }
+    }
+
+    @media (max-width: 800px){
+        .delete-popup {
+            margin: 250px 16%;
+        }
+
+        .table th {
+            width: 185px;
+        }
+        .delete-confirm {
+            min-height: 116dvh;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .js-strike-through::after {
+            width: 95%;
+        }
+
+        .table tr th:nth-of-type(4),
+        .table tr td:nth-of-type(4){
+
+            display: none;
+        }
+
+        .table th:nth-of-type(3) {
+            border-radius: 0px 5px 5px 0px;
+        }
+
+        .table th {
+            width: 207px;
+        }
+
+        
+    }
+
+    @media (max-width: 575px) {
+        
+        .delete-popup {
+            margin: 250px 5%;
+        }
+
+        .table {
+            font-size: 18px;
+        }
+
+        .table th {
+            width: 228px;
+        }
+
+
+    }
+
+    @media (max-width: 512px) {
+        .table thead tr td.status-heading div a:nth-of-type(1) {
+            
+            padding-inline: 20px;
+        }
+        .table thead tr td.status-heading div a:nth-of-type(2) {
+
+            padding-inline: 25px;
+        }
+        .table thead tr td.status-heading div a:nth-of-type(3) {
+            padding-inline: 16px;
+        }
+    }
+
+    @media (max-width: 475px) {
+        .table thead tr td.status-heading div a:nth-of-type(1) {
+            
+            padding-inline: 15px;
+        }
+        .table thead tr td.status-heading div a:nth-of-type(2) {
+
+            padding-inline: 18px;
+        }
+        .table thead tr td.status-heading div a:nth-of-type(3) {
+            padding-inline: 10px;
+        }
+
+        
+    }
+
+    @media (max-width: 410px) {
+
+        .table thead tr td.status-heading div a:nth-of-type(1) {
+            
+            padding-inline: 10px;
+        }
+        .table thead tr td.status-heading div a:nth-of-type(2) {
+
+            padding-inline: 14px;
+        }
+        .table thead tr td.status-heading div a:nth-of-type(3) {
+            padding-inline: 5px;
+        }
+    }
+
+
+    @media (max-width: 395px) {
+
+        h2 span {
+            font-size: 21px;
+            padding-inline: 10px;
+        }
+        h2 img {
+            width: 60px;
+        }
+        
+
+        .table {
+            font-size: 16px;
+        }
+        .table thead tr td.status-heading {
+            font-size: 14px;
+            
+        }
+        
+        .delete-confirm {
+            min-height: 109dvh;
+        }
+    }
+
+    @media (max-width: 353px) {
+        
+        .table thead tr td.status-heading div a:nth-of-type(1) {
+            
+            padding-inline: 5px;
+        }
+        .table thead tr td.status-heading div a:nth-of-type(2) {
+
+            padding-inline: 10px;
+        }
+        .table thead tr td.status-heading div a:nth-of-type(3) {
+            padding-inline: 4px;
+        }
+    }
+
+
+    @media (max-width: 330px) {
+
+        .table {
+            font-size: 16px;
+        }
+
+        .table thead tr td.status-heading {
+            font-size: 13px;
+            
+        }
+       
+        .modal {
+            width: 309px;
+            margin: 60px 7px 0 7px;
+        }
+
+        .delete-popup {
+            margin: 250px 20px 0 20px;
+            min-width: 284px;
+        }
+
+        .delete-confirm {
+            min-height: 110dvh;
+        }
+
+
+        
+    }
+   
+
+</style>
+ -->
+
+<body class="home">
+
+
+    <div class="container my-3">
+
+        <div class="mx-auto shadow border p-3 p-md-5 mt-4 rounded-2 app-div bg-body-tertiary">
+
+            
+        
+            <h2 class="text-center mt-2 p-2 text-primary-emphasis"> 
+                <span class="rounded-5 bg-secondary-subtle border border-2 "> My Todo List</span> 
+                <a href="{% url 'task-add' %}" class="text-info add-btn shadow" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add new Todo's"><i class="fa-solid fa-plus"></i></a>
+            </h2>
+ 
+            
+            <div class="message-div">
+            {% if messages %}
+            
+                {% for m in messages %}
+
+                    <div class="alert alert-success alert-dismissible fade show text-center alert-message" role="alert">
+                        <strong>{{ m }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                
+                {% endfor %}
+            
+            {% endif %}
+            </div>
+
+            <div class="user-div">
+      
+                <div class="username-div">
+                    <span class="username-span text-primary-emphasis border border-2 rounded-5"><i class="fa-solid fa-user "></i> <i class="text-success username text-capitalize">{{request.user}}</i> <i class="fa-solid fa-caret-down"></i></span>
+                    
+                    <span class="logout-btn rounded-3 d-none">(<a href="{% url 'signout' %}" class="btn btn-secondary btn-sm shadow rounded-pill fw-medium text-info">Logout</a>)</span>
+ 
+                </div>   
+                
+{% comment %} 
+                <div class="add-form-div">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{form.title}}
+                        <button type="submit" class="btn btn-secondary text-info">+</button>
+                    </form>
+                </div>
+                 {% endcomment %}
+
+            </div>
+
+
+            
+
+
+
+            <table class="table table-striped align-middle my-2 table-hover" style="width:100%;">
+
+                <colgroup span="1" class=""></colgroup>
+                <colgroup span="2"></colgroup>
+                <colgroup span="1" class="more-option-column"></colgroup>
+
+                <thead>
+
+                    <tr>
+                        <td colspan="4" class="bg-light status-heading">
+                            
+                            <div class="task-status-div d-flex justify-content-around">
+                                <a class="all_button active">All (<span class="">{{all_count.total}}</span>)</a>
+                                <a class="pending_button">Pending (<span class="">{{pending_count.total_count}}</span>)</a>
+                                <a class="completed_button">Completed (<span class="">{{completed_count.total_count}}</span>)</a>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <th style="width: 64px; min-width: 30px;">#</th>
+                        <th>Tasks</th>
+                        <th>
+
+                            Status
+
+                        </th>
+                        <th >More Options</th>
+        
+                    </tr>
+                   
+                </thead>
+                
+                <tbody>
+                    {% for todo in data %}
+
+                    <tr class="js-strike-through all_task">
+                        <td class="text-secondary">
+                            {{forloop.counter}}.
+                            
+                            <input type="checkbox" name="mobile-check" id="" class="mobile-button-check d-none">
+                            
+                        
+                        </td>
+                        <td>       
+                            <span class="text-primary-emphasis">{{todo.title}}</span>
+
+                            <div class="mobile-button">
+ 
+                                <a class="btn btn-sm btn-info rounded-5 shadow" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{forloop.counter}}"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{% url 'task-edit' todo.id %}" class="btn btn-sm btn-dark rounded-5 shadow"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <button data-todo-id="{{todo.id}}" class="btn btn-sm btn-danger text-warning rounded-5 delete-button shadow"><i class="fa-solid fa-trash"></i></button>
+                                
+                            </div>
+
+                        </td>
+                        <td class="js-complete-status complete-status">
+                            {% if todo.completed == True %}
+        
+                            <span class="text-success">Completed</span>
+        
+                            {% else %}
+        
+                            <span class="text-warning">Pending</span>
+        
+                            {% endif %}
+        
+                        </td>
+                        <td> 
+                            <div class="more-options">
+                                
+                                <a class="btn btn-sm btn-info rounded-5 ms-2 shadow" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{forloop.counter}}"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{% url 'task-edit' todo.id %}" class="btn btn-sm btn-dark rounded-5 mx-3 shadow"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <button data-todo-id="{{todo.id}}" class="btn btn-sm btn-danger text-warning rounded-5 delete-button shadow"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+
+                            
+                        </td>
+                        
+                    </tr>
+
+                    
+    
+                    {% endfor %}
+
+                    <!-- pending task -->
+
+                    {% for task in pending_tasks %}
+                    
+                    <tr class="pending_task d-none">
+                        <td class="text-secondary">
+                            {{forloop.counter}}.
+                            
+                            <input type="checkbox" name="mobile-check" id="" class="mobile-button-check d-none">
+                        </td>
+                        <td>
+
+                            <span class="text-primary-emphasis">{{task.title}}</span>
+
+                            <div class="mobile-button">
+ 
+                                <a class="btn btn-sm btn-info rounded-5 shadow" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{forloop.counter}}"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{% url 'task-edit' task.id %}" class="btn btn-sm btn-dark rounded-5 shadow"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <button data-todo-id="{{task.id}}" class="btn btn-sm btn-danger text-warning rounded-5 delete-button shadow"><i class="fa-solid fa-trash"></i></button>
+                                
+                            </div>
+
+                        </td>
+                        <td>
+                            <span class="text-warning">Pending</span>
+                        </td>
+                        <td>
+                          <div class="more-options">
+                                
+                                <a class="btn btn-sm btn-info rounded-5 ms-2 shadow" data-bs-toggle="modal" data-bs-target="#staticBackdropPending{{forloop.counter}}"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{% url 'task-edit' task.id %}" class="btn btn-sm btn-dark rounded-5 mx-3 shadow"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <button data-todo-id="{{task.id}}" class="btn btn-sm btn-danger text-warning rounded-5 delete-button shadow"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    {% endfor %}
+
+                     <!-- completed task -->
+
+                     {% for task in completed_tasks %}
+                    
+                     <tr class="completed_task d-none">
+                         <td class="text-secondary">
+
+                             {{forloop.counter}}.
+                             
+                             <input type="checkbox" name="mobile-check"  class="mobile-button-check d-none">
+                         </td>
+                         <td>
+ 
+                             <span class="text-primary-emphasis">{{task.title}}</span>
+ 
+                             <div class="mobile-button">
+  
+                                 <a class="btn btn-sm btn-info rounded-5 shadow" data-bs-toggle="modal" data-bs-target="#staticBackdropCompleted{{forloop.counter}}"><i class="fa-solid fa-eye"></i></a>
+                                 <a href="{% url 'task-edit' task.id %}" class="btn btn-sm btn-dark rounded-5 shadow"><i class="fa-solid fa-pen-to-square"></i></a>
+                                 <button data-todo-id="{{task.id}}" class="btn btn-sm btn-danger text-warning rounded-5 delete-button shadow "><i class="fa-solid fa-trash"></i></button>
+                                 
+                             </div>
+ 
+                         </td>
+                         <td>
+                             <span class="text-success">Completed</span>
+                         </td>
+                         <td>
+                           <div class="more-options">
+                                 
+                                 <a class="btn btn-sm btn-info rounded-5 ms-2 shadow" data-bs-toggle="modal" data-bs-target="#staticBackdropCompleted{{forloop.counter}}"><i class="fa-solid fa-eye"></i></a>
+                                 <a href="{% url 'task-edit' task.id %}" class="btn btn-sm btn-dark rounded-5 mx-3 shadow"><i class="fa-solid fa-pen-to-square"></i></a>
+                                 <button data-todo-id="{{task.id}}" class="btn btn-sm btn-danger text-warning rounded-5 delete-button shadow "><i class="fa-solid fa-trash"></i></button>
+                             </div>
+                         </td>
+                     </tr>
+                     
+                     {% endfor %}
+
+                </tbody>
+            </table>
+
+
+            <div class="text-end pt-3 d-none">
+                <small class="text-secondary">Created by Unnikrishnan</small>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="confirmation-container">
+
+        <!-- Modal for all tasks -->
+
+        {% for todo in data %} 
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop{{forloop.counter}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-light">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-primary-emphasis" id="staticBackdropLabel">Task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-body-secondary">
+                        <p><span class="text-muted">User</span> : {{todo.user}}</p>
+                        <p><span class="text-muted">Title</span> : {{todo.title}}</p>
+                        <p><span class="text-muted">Description</span> : {{todo.description|capfirst}}</p>
+                        <p><span class="text-muted">Status</span> :  
+
+                            {% if todo.completed == True %}
+
+                            <span class="text-success status">Completed</span>
+
+                            {% else %}
+
+                            <span class="text-warning status">Pending</span>
+
+                            {% endif %}
+
+                        </p>
+
+                        <p><span class="text-muted">Date created</span> : {{todo.date_created|timezone:"Asia/Kolkata"}}</p>
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+   
+        <div id="delete-confirm-{{todo.id}}" class="delete-confirm d-none">
+            <div class="delete-popup">
+                <p>Do you want to delete?</p>
+                <p class="text-capitalize"><i class="">Task</i> : <span class="text-info">{{todo.title}}</span></p>
+                <div>
+                    <a class="btn btn-danger text-warning confrim-delete-button mx-2 border shadow my-2" href="{% url 'task-delete' todo.id %}"><i class="fa-solid fa-trash me-1"></i> Delete</a>
+                    <button class="btn btn-secondary cancel-button mx-2 border shadow my-2" data-todo-id="{{todo.id}}"><i class="fa-solid fa-xmark me-1"></i> Cancel</button>
+
+                </div>
+            </div>
+        </div>
+       
+        
+        {% endfor %}
+
+        <!-- Modal for pending tasks -->
+
+        {% for task in pending_tasks %}
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdropPending{{forloop.counter}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-light">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-primary-emphasis" id="staticBackdropLabel">Task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-body-secondary">
+                        <p><span class="text-muted">User</span> : {{request.user}}</p>
+                        <p><span class="text-muted">Title</span> : {{task.title}}</p>
+                        <p><span class="text-muted">Description</span> : {{task.description|capfirst}}</p>
+                        <p><span class="text-muted">Status</span> :  
+
+                            {% if task.completed == True %}
+
+                            <span class="text-success status">Completed</span>
+
+                            {% else %}
+
+                            <span class="text-warning status">Pending</span>
+
+                            {% endif %}
+
+                        </p>
+
+                        <p><span class="text-muted">Date created</span> : {{task.date_created|timezone:"Asia/Kolkata"}}</p>
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+
+        <div id="delete-confirm-{{task.id}}" class="delete-confirm d-none">
+            <div class="delete-popup">
+                <p>Do you want to delete?</p>
+                <p class="text-capitalize"><i class="">Task</i> : <span class="text-info">{{task.title}}</span></p>
+                <div>
+                    <a class="btn btn-danger text-warning confrim-delete-button mx-2 border shadow my-2" href="{% url 'task-delete' task.id %}"><i class="fa-solid fa-trash me-1"></i> Delete</a>
+                    <button class="btn btn-secondary cancel-button mx-2 border shadow my-2" data-todo-id="{{task.id}}"><i class="fa-solid fa-xmark me-1"></i> Cancel</button>
+
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+        <!-- Modal for completed tasks -->
+
+        {% for task in completed_tasks %}
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdropCompleted{{forloop.counter}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-light">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-primary-emphasis" id="staticBackdropLabel">Task</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-body-secondary">
+                        <p><span class="text-muted">User</span> : {{request.user}}</p>
+                        <p><span class="text-muted">Title</span> : {{task.title}}</p>
+                        <p><span class="text-muted">Description</span> : {{task.description|capfirst}}</p>
+                        <p><span class="text-muted">Status</span> :  
+
+                            {% if task.completed == True %}
+
+                            <span class="text-success status">Completed</span>
+
+                            {% else %}
+
+                            <span class="text-warning status">Pending</span>
+
+                            {% endif %}
+
+                        </p>
+
+                        <p><span class="text-muted">Date created</span> : {{task.date_created|timezone:"Asia/Kolkata"}}</p>
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+
+        <div id="delete-confirm-{{task.id}}" class="delete-confirm d-none">
+            <div class="delete-popup">
+                <p>Do you want to delete?</p>
+                <p class="text-capitalize"><i class="">Task</i> : <span class="text-info">{{task.title}}</span></p>
+                <div>
+                    <a class="btn btn-danger text-warning confrim-delete-button mx-2 border shadow my-2" href="{% url 'task-delete' task.id %}"><i class="fa-solid fa-trash me-1"></i> Delete</a>
+                    <button class="btn btn-secondary cancel-button mx-2 border shadow my-2" data-todo-id="{{task.id}}"><i class="fa-solid fa-xmark me-1"></i> Cancel</button>
+
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+        
+    </div>
+
+
+
+
+   
+<!-- 
+    <script>
+
+
+        // message timer 
+
+        if (document.querySelector('.alert-message')) {
+            setTimeout(function(){
+                document.querySelector('.alert-message button').click();
+            },2000)
+        }
+
+        // username and logout button inline padding
+
+        let name = document.querySelector('.username-span .username').innerText
+
+        let displayName = ''
+        if (name.length >= 12) {
+
+            displayName = name.slice(0, 10) + '...';
+
+        } else {
+            displayName = name;
+        }
+
+        document.querySelector('.username-span .username').innerText = displayName
+
+        let userNameSpanWidth = 89 + displayName.length
+        
+
+        console.log(userNameSpanWidth)
+
+        let inlinePadding = userNameSpanWidth / 4
+        console.log(inlinePadding)
+
+        let logoutPaddingInline = window.getComputedStyle(document.querySelector('.logout-btn')).paddingInline;
+        console.log(logoutPaddingInline)
+        console.log(typeof logoutPaddingInline)
+        
+        if (displayName.length > 6) {
+
+            let addLength = displayName.length - 6
+            console.log(addLength)
+
+            if (addLength < 6){
+                document.querySelector('.logout-btn').style.paddingInline = 4.55*addLength + inlinePadding + 'px';
+            } else {
+                document.querySelector('.logout-btn').style.paddingInline = 3*addLength + inlinePadding + 'px';
+            }
+
+        } else {
+
+            let subLength = 6 - displayName.length
+            if(displayName.length > 4) {
+                document.querySelector('.logout-btn').style.paddingInline =  inlinePadding - 4*subLength + 'px';
+                    
+                
+            }
+        }
+
+
+        
+        // logout button
+
+        document.querySelector('.username-span').addEventListener('click', function(e) {
+            
+            e.stopPropagation();
+
+            document.querySelectorAll('.mobile-button').forEach((item)=>{
+                item.style.display = 'none'
+            })
+
+            document.querySelectorAll('.table tr').forEach((eachTr)=>{
+                
+                eachTr.querySelectorAll('td').forEach((eachTd)=>{
+                    
+                    eachTd.style.paddingBlock = '8px';
+                })
+                eachTr.classList.remove('activeTr');
+                
+            })
+
+            document.querySelector('.logout-btn').classList.toggle('d-none');
+            
+
+        })
+
+        document.querySelector('.fa-solid.fa-caret-down').addEventListener('click', function(e){
+            e.stopPropagation();
+            document.querySelectorAll('.mobile-button').forEach((item)=>{
+                item.style.display = 'none'
+            })
+
+            document.querySelectorAll('.table tr').forEach((eachTr)=>{
+                
+                eachTr.querySelectorAll('td').forEach((eachTd)=>{
+                    
+                    eachTd.style.paddingBlock = '8px';
+                })
+                eachTr.classList.remove('activeTr');
+                
+            })
+
+            document.querySelector('.logout-btn').classList.toggle('d-none');
+            
+
+        })
+
+        document.querySelector('.app-div').addEventListener('click', function(e){
+            e.stopPropagation();
+            document.querySelector('.logout-btn').classList.add('d-none');
+            
+        }) 
+
+
+        // strike-effect
+
+        document.querySelectorAll('.js-complete-status').forEach((elem) => {
+            if (elem.querySelector('span').innerHTML === 'Completed') {
+                //elem.parentElement.style.textDecoration = 'line-through';
+                elem.parentElement.style.setProperty('--displayValue', 'block');
+
+            }
+        })
+
+
+        // bootstrap tooltip
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+ 
+        
+
+        // delete confirmation
+
+        document.querySelectorAll('.delete-button').forEach(function(button, index){
+            button.addEventListener('click', function(e){
+                
+                let todoId = button.dataset.todoId
+                //console.log(todoId)
+
+                document.querySelector(`#delete-confirm-${todoId}`).classList.remove('d-none');
+                document.querySelector(`#delete-confirm-${todoId}`).classList.add('active-div');
+
+                document.querySelector('.delete-confirm.active-div .delete-popup').classList.add('active-popup');
+                
+            });
+        });
+
+        document.querySelectorAll('.cancel-button').forEach(function(button){
+
+            //console.log(button.parentElement.parentElement.parentElement)
+            
+            button.addEventListener('click', function(e){
+                if (button.parentElement.parentElement.parentElement.classList.contains('active-div')) {
+
+                    let todoId = button.dataset.todoId;
+                    //console.log(todoId)
+                    document.querySelector(`#delete-confirm-${todoId}`).classList.add('d-none');
+                    document.querySelector(`#delete-confirm-${todoId}`).classList.remove('active-div');
+
+                    document.querySelector(`#delete-confirm-${todoId} .delete-popup`).classList.remove('active-popup');
+                    
+                }
+                        
+            });
+        });
+       
+
+
+        // task status selection
+
+        document.querySelector('.all_button').addEventListener('click', function(e){
+
+            document.querySelectorAll('.table thead tr td.status-heading div a').forEach((item)=>{
+                item.classList.remove('active');
+            })
+
+            document.querySelectorAll('.all_task').forEach((task)=>{
+                task.classList.remove('d-none');
+            })
+
+            document.querySelectorAll('.pending_task').forEach((task)=>{
+                task.classList.add('d-none');
+            })
+
+            document.querySelectorAll('.completed_task').forEach((task)=>{
+                task.classList.add('d-none');
+            })
+
+            this.classList.add('active');
+            
+        })
+
+        document.querySelector('.pending_button').addEventListener('click', function(e){
+
+            document.querySelectorAll('.table thead tr td.status-heading div a').forEach((item)=>{
+                item.classList.remove('active');
+            })
+
+
+            document.querySelectorAll('.pending_task').forEach((task)=>{
+                task.classList.remove('d-none');
+            })
+
+            document.querySelectorAll('.all_task').forEach((task)=>{
+                task.classList.add('d-none');
+            })
+
+            document.querySelectorAll('.completed_task').forEach((task)=>{
+                task.classList.add('d-none');
+            })
+
+            document.querySelector('.pending_button').classList.add('active')
+            
+        })
+
+        document.querySelector('.completed_button').addEventListener('click', function(e){
+
+            document.querySelectorAll('.table thead tr td.status-heading div a').forEach((item)=>{
+                item.classList.remove('active');
+            })
+
+            document.querySelectorAll('.completed_task').forEach((task)=>{
+                task.classList.remove('d-none');
+            })
+
+            document.querySelectorAll('.all_task').forEach((task)=>{
+                task.classList.add('d-none');
+            })
+
+            document.querySelectorAll('.pending_task').forEach((task)=>{
+                task.classList.add('d-none');
+            })
+
+            this.classList.add('active');
+            
+        })
+
+        
+
+        // mobile view
+
+        function mobileView() {
+
+
+            window.addEventListener('resize', function(e){
+                
+                if(window.innerWidth <= 767) {
+                    document.querySelector('.more-option-column').classList.add('hide-column')
+                    
+                    document.querySelector('.table tr th:nth-of-type(3)').innerHTML = 'Status'
+                  
+                } else if(window.innerWidth > 767){
+                    document.querySelector('.more-option-column').classList.remove('hide-column')
+                    
+                    document.querySelector('.table tr th:nth-of-type(3)').innerHTML = 'Status'
+                }
+
+                if (window.innerWidth >= 767){
+                    
+                    location.reload();
+                }
+
+
+            })
+
+
+            if (window.innerWidth > 767) {
+                document.querySelector('.more-option-column').classList.remove('hide-column');
+                document.querySelector('.table tr th:nth-of-type(3)').innerHTML = 'Status'
+            } else if(window.innerWidth <= 767){
+                document.querySelector('.more-option-column').classList.add('hide-column');
+                document.querySelector('.table tr th:nth-of-type(3)').innerHTML = 'Status'
+            }
+
+
+
+            // all task 
+            
+            document.querySelectorAll('.table .js-strike-through').forEach(function(elem, index) {
+                elem.addEventListener('click', function(e){
+
+                    document.querySelector('.logout-btn').classList.add('d-none');
+
+                    if(window.innerWidth <= 767){
+
+                        e.stopPropagation();
+
+                        if (elem.classList.contains(`activeTr`)) {
+                            elem.querySelector('td .mobile-button').style.display = 'none';
+                            elem.querySelectorAll('td').forEach((eachTd)=>{
+                                eachTd.style.paddingBlock = '8px';
+                            })
+                            elem.classList.remove('activeTr');
+
+                        } else {
+
+                            
+                            document.querySelectorAll('.table .js-strike-through').forEach((eachTr, index)=>{
+
+                                eachTr.querySelector('td .mobile-button').style.display = 'none';
+
+                                eachTr.querySelectorAll('td').forEach((eachTd)=>{
+                                    eachTd.style.paddingBlock = '8px';
+                                });
+                                
+                                eachTr.classList.remove(`activeTr`)
+                            });
+                            
+    
+                            elem.querySelectorAll('td').forEach(function(item){
+                                item.style.paddingBlock = '15px';
+                            });
+    
+                            this.classList.add(`activeTr`);
+
+                            elem.querySelector('td .mobile-button').style.display = 'flex';
+             
+    
+                            
+                        }
+                    }    
+                    
+                });
+            });
+
+            document.querySelector('.app-div').addEventListener('click', function(e){
+
+                e.stopPropagation();
+
+                document.querySelectorAll('.table .js-strike-through td .mobile-button').forEach((item)=>{
+                    item.style.display = 'none';
+                });
+
+                document.querySelectorAll('.table .js-strike-through').forEach((eachTr, index)=>{
+                    eachTr.querySelectorAll('td').forEach((eachTd)=>{
+                        eachTd.style.paddingBlock = '8px';
+                    });
+                    eachTr.classList.remove(`activeTr`)
+                });
+                
+            })
+            
+           
+            
+            // pending task
+
+            document.querySelectorAll('.table .pending_task').forEach(function(elem){
+                elem.addEventListener('click', function(e) {
+                    //elem.querySelector('td input[type="checkbox"]').click()
+                    
+                    
+                    document.querySelector('.logout-btn').classList.add('d-none');
+                    
+                    if (window.innerWidth <= 767) {
+
+                        e.stopPropagation();
+                        
+                        if (elem.classList.contains('activeTr')) {
+    
+                            elem.querySelector('td .mobile-button').style.display = 'none';
+                            elem.querySelectorAll('td').forEach((eachTd)=>{
+                                eachTd.style.paddingBlock = '8px';
+                            })
+                            elem.classList.remove('activeTr');
+    
+                        } else {
+    
+                            document.querySelectorAll('.table .pending_task').forEach(function(eachTr){
+                                eachTr.querySelector('td .mobile-button').style.display = 'none';
+                                eachTr.querySelectorAll('td').forEach(function(eachTd){
+                                    eachTd.style.paddingBlock = '8px';
+                                })
+                                eachTr.classList.remove('activeTr'); 
+                            })
+    
+                            elem.querySelector('td .mobile-button').style.display = 'flex';
+                            elem.classList.add('activeTr')
+                            elem.querySelectorAll('td').forEach((eachTd)=>{
+                                eachTd.style.paddingBlock = '15px';
+                            })
+                        }
+                    }
+
+   
+                })
+            })
+
+            document.querySelector('.app-div').addEventListener('click', function(e){
+
+                e.stopPropagation();
+
+                document.querySelectorAll('.table .pending_task td .mobile-button').forEach((item) => {
+                    item.style.display = 'none';
+                });
+
+                document.querySelectorAll('.table .pending_task').forEach(function(eachTr){
+                    eachTr.querySelectorAll('td').forEach((eachTd)=>{
+                        eachTd.style.paddingBlock = '8px';
+                    })
+                    eachTr.classList.remove('activeTr');
+                })
+
+
+            })
+
+
+            // completed tasks
+
+            document.querySelectorAll('.table .completed_task').forEach(function(elem){
+                elem.addEventListener('click', function(e) {
+                    
+                    
+                    document.querySelector('.logout-btn').classList.add('d-none');
+                    
+                    
+                    if (window.innerWidth <= 767) {
+
+                        e.stopPropagation();
+                        
+                        if(elem.classList.contains('activeTr')) {
+
+                            elem.querySelectorAll('td').forEach((eachTd)=>{
+                                eachTd.style.paddingBlock = '8px';
+                            })
+
+                            elem.querySelector('td .mobile-button').style.display = 'none';
+
+                            elem.classList.remove('activeTr');
+
+                        } else {
+                            document.querySelectorAll('.table .completed_task').forEach(function(eachTr){
+                                eachTr.querySelectorAll('td').forEach((eachTd)=>{
+                                    eachTd.style.paddingBlock = '8px';
+                                })
+
+                                eachTr.querySelector('td .mobile-button').style.display = 'none';
+
+                                eachTr.classList.remove('activeTr');
+                            })
+
+                            elem.querySelectorAll('td').forEach((item)=>{
+                                item.style.paddingBlock = '15px';
+                            })
+
+                            elem.querySelector('td .mobile-button').style.display = 'flex';
+
+                            elem.classList.add('activeTr');
+                            
+                        }
+                    
+                        
+                    }
+                })
+            })
+
+            document.querySelector('.app-div').addEventListener('click', function(e){
+
+                e.stopPropagation();
+
+                document.querySelectorAll('.table .completed_task td .mobile-button').forEach((item) => {
+                    item.style.display = 'none';
+                });
+
+                document.querySelectorAll('.table .completed_task').forEach(function(eachTr){
+                    eachTr.querySelectorAll('td').forEach((eachTd)=>{
+                        eachTd.style.paddingBlock = '8px';
+                    })
+
+                    eachTr.classList.remove('activeTr');
+                })
+
+
+            })
+        
+        }
+
+
+        mobileView(); 
+
+        /*
+        document.querySelector('.app-div').addEventListener('click', function(e){
+                
+
+            document.querySelectorAll('input[type="checkbox"]').forEach((item)=>{
+                if (item.classList.contains('checked-item') && item.checked) {
+                    item.click();
+                    item.classList.remove('checked-item')
+                }
+            })
+           
+           
+        })
+         
+        */ 
+
+    </script>
+ -->
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+crossorigin="anonymous"></script>
+
+
+<script src="{% static 'js/myscripts.js' %}"></script>  
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Edit</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+
+    body {
+        font-family: 'Popins', sans-serif;
+        /*background-color: rgba(52, 52, 116, 0.701);*/
+
+        background-color: #8EC5FC;
+        background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+        background-attachment: fixed;
+    }
+
+
+    div:has(>input[type='checkbox']) {
+        display: inline-flex;
+        margin-bottom: 10px;
+    }
+
+    input[type='checkbox'] {
+        margin-inline: 7px;
+        width: 16px;
+        color: green;
+        
+    }
+    input[type='checkbox']:focus {
+        background-color: white;
+        color: green;
+    }
+
+    /*
+    input[type='checkbox']:checked {
+        background-color: white;
+        color: green;
+    }
+    */
+
+    form div:has(input[type='checkbox']) {
+        
+        position: relative;
+        
+    }
+
+    input[type='checkbox']::after {
+        content: '✔';
+        font-size: 35px;
+        border-radius: 50px;
+        background-color: rgba(248, 249, 250, 0.718);
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        position: absolute;
+        top: -4px;
+        left: 84px;
+        line-height: 22px;
+        display: var(--display-item, none);
+    }
+
+    input[type='checkbox'].active::after{
+        display: var(--display-item, block);
+    }
+    
+</style>
+
+<body class="edit-task">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-lg-3"></div>
+            <div class="col-md-8 col-lg-6">
+                <div class="shadow rounded p-3 mt-5 bg-light" style="min-width: 300px;">
+                    <h2 class="text-center mb-3 mt-2 p-2 text-primary-emphasis lh-2"><span class="border rounded-5 px-3 py-2 bg-secondary-subtle">My Todo List</span></h2>
+                    <h3 class="text-center mb-3 text-primary-emphasis">Edit Task</h3>
+
+                    {% if messages %}
+            
+                        {% for m in messages %}
+
+                            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+                                <strong>{{ m }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        
+                        {% endfor %}
+            
+                    {% endif %}
+
+
+
+                    <form action="" method="post" class="">
+    
+                        {% csrf_token %}
+
+                        {{form}}
+                    
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+                            <a href="{% url 'home' %}"  class="btn btn-secondary btn-sm">Cancel</a>
+                        </div>
+    
+                    </form>
+
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-3"></div>
+        </div>
+    </div>
+
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+<script>
+
+// tick mark
+
+if(document.querySelector('input[type="checkbox"]').checked) {
+    document.querySelector('input[type="checkbox"]').classList.add('active')
+
+}
+
+document.querySelector('input[type="checkbox"]').addEventListener('click', function(e){
+    this.classList.toggle('active')
+})
+
+
+
+</script>
+
+</html>
