@@ -20,11 +20,16 @@ from mytodos.decorators import signin_required
 
 from django.utils.decorators import method_decorator
 
+from django.views.decorators.cache import never_cache
+
 
 
 # Create your views here.
 
-@method_decorator(signin_required, name='dispatch')
+decorator_list = [signin_required, never_cache]
+
+
+@method_decorator(decorator_list, name='dispatch')
 class HomeView(View):
 
     def get(self, request, *args, **kwargs):
@@ -78,7 +83,7 @@ class HomeView(View):
         
 
 
-@method_decorator(signin_required, name='dispatch')    
+@method_decorator(decorator_list, name='dispatch')    
 class TaskAddView(View):
 
     def get(self, request, *args, **kwargs):
@@ -108,7 +113,7 @@ class TaskAddView(View):
 
 
 
-@method_decorator(signin_required, name='dispatch')
+@method_decorator(decorator_list, name='dispatch')
 class TaskEditView(View):
     
     def get(self, request, *args, **kwargs):
@@ -139,7 +144,7 @@ class TaskEditView(View):
     
         
 
-@method_decorator(signin_required, name='dispatch')    
+@method_decorator(decorator_list, name='dispatch')    
 class TaskDeleteView(View):
 
     def get(self, request, *args, **kwargs):
@@ -221,7 +226,7 @@ class SignInView(View):
 
 
 
-@method_decorator(signin_required, name='dispatch')
+@method_decorator(decorator_list, name='dispatch')
 class SignOutView(View):
 
     def get(self, request, *args, **kwargs):
