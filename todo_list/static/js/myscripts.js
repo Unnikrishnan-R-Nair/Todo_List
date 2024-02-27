@@ -1,6 +1,16 @@
 
 // HOME 
 
+// modal description
+
+// document.querySelectorAll('.modal-body p:nth-of-type(3) span:nth-of-type(2)').forEach((item)=> {
+//     let arr = item.innerHTML.split("\n", )
+// })
+
+// add task form 
+
+document.querySelector('#id_title').setAttribute('placeholder', 'Add task');
+document.querySelector('#id_title').classList.remove('mb-3')
 // message timer 
 
 if (document.querySelector('.alert-message')) {

@@ -681,11 +681,24 @@
         <div class="mx-auto shadow border p-3 p-md-5 mt-4 rounded-2 app-div bg-body-tertiary">
 
             
+            
         
-            <h2 class="text-center mt-2 p-2 text-primary-emphasis"> 
+            <h2 class="text-center text-primary-emphasis"> 
                 <span class="rounded-5 bg-secondary-subtle border border-2 "> My Todo List</span> 
                 <a href="{% url 'task-add' %}" class="text-info add-btn shadow" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add new Todo's"><i class="fa-solid fa-plus"></i></a>
             </h2>
+
+            <div class="user-div">
+      
+                <div class="username-div">
+                    <span class="username-span text-primary-emphasis border border-2 rounded-5"><i class="fa-solid fa-user "></i> <i class="text-success username text-capitalize">{{request.user}}</i> <i class="fa-solid fa-caret-down"></i></span>
+                    
+                    <span class="logout-btn d-none">(<a href="{% url 'signout' %}" class="btn btn-secondary btn-sm shadow fw-medium text-info">Logout</a>)</span>
+ 
+                </div>   
+                
+
+            </div>
  
             
             <div class="message-div">
@@ -703,30 +716,14 @@
             {% endif %}
             </div>
 
-            <div class="user-div">
-      
-                <div class="username-div">
-                    <span class="username-span text-primary-emphasis border border-2 rounded-5"><i class="fa-solid fa-user "></i> <i class="text-success username text-capitalize">{{request.user}}</i> <i class="fa-solid fa-caret-down"></i></span>
-                    
-                    <span class="logout-btn rounded-3 d-none">(<a href="{% url 'signout' %}" class="btn btn-secondary btn-sm shadow rounded-pill fw-medium text-info">Logout</a>)</span>
- 
-                </div>   
-                
-{% comment %} 
-                <div class="add-form-div">
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        {{form.title}}
-                        <button type="submit" class="btn btn-secondary text-info">+</button>
-                    </form>
-                </div>
-                 {% endcomment %}
 
+            <div class="add-form-div">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form.title}}
+                    <button type="submit" class="btn btn-secondary text-info">+</button>
+                </form>
             </div>
-
-
-            
-
 
 
             <table class="table table-striped align-middle my-2 table-hover" style="width:100%;">
@@ -920,7 +917,7 @@
                     <div class="modal-body bg-body-secondary">
                         <p><span class="text-muted">User</span> : {{todo.user}}</p>
                         <p><span class="text-muted">Title</span> : {{todo.title}}</p>
-                        <p><span class="text-muted">Description</span> : {{todo.description|capfirst}}</p>
+                        <p><span class="text-muted">Description</span> : <span>{{todo.description|capfirst}}</span></p>
                         <p><span class="text-muted">Status</span> :  
 
                             {% if todo.completed == True %}
